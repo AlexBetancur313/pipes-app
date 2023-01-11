@@ -1,0 +1,103 @@
+<div class="text-layout">
+  <h1>Pipes Fieldset</h1>
+  <p>
+    Pipes incluidos en Angular - Usualmente en el Common Module <br>
+    Los Fieldset son aquellas animaciones que permite desplegar una caja la cual contiene contenido que nosotros
+    le designemos <br>
+    Para poder hacer uso de este debemos realizar una importacion tal cual lo indica la documentacion <a
+      href="https://primefaces.org/primeng/fieldset">PrimeNg Fieldset</a> aca encontramos los necesario para la
+    importación, ademas hay otra importacion importante para el uso que no se encuentra directamente en la
+    documentación, las importaciones las haremos en el archivo propio de las importaciones de primeNg las dos
+    importaciones necesarias para el uso son: <br>
+    import FieldsetModule from 'primeng/fieldset';<br>
+    import BrowserAnimationsModule from '@angular/platform-browser/animations'; <br>
+    Las importaciones dentro de las llaves
+    Luego se exportan, seria usar las etiquetas y agregarle sus valores propios de esta
+  </p>
+  <h2>i18nPlural y i18nSelect</h2>
+  <p>
+    Dependiendo de algun argumento que se
+    ingrese, hay dos formas el primero es el <b>i18nSelectPipe</b> y <b>i18nPlural</b>, ambos son para mostrar un
+    mensaje o palabra dependiendo de un argumento previo.
+  </p>
+</div>
+
+<div class="grid">
+
+  <div class="col md:col-6 sm:col-9">
+    <p-fieldset legend="i18nSelectPipe" [toggleable]="true">
+      Saludos {{nombre}}, es un placer {{genero | i18nSelect:invitacionMapa}} a nuestro evento
+      <br><br>
+
+      <button pButton type="button" label="Cambiar cliente" class="p-button-outlined"
+        (click)="cambiarCliente()"></button>
+
+    </p-fieldset>
+
+  </div>
+
+  <div class="col md:col-6 sm:col-9">
+    <p-fieldset legend="i18nPlural" [toggleable]="true">
+      Actualmente tenemos {{clientes.length | i18nPlural:clientesMapa}}
+
+      <br><br>
+      <button pButton type="button" label="Borrar cliente" class="p-button-outlined" (click)="borrarCliente()"></button>
+    </p-fieldset>
+
+  </div>
+
+  <div class="col md:col-6 sm:col-9">
+    <p-fieldset legend="Slice Pipe" [toggleable]="true">
+      <p>
+        Lo que hace el Slice Pipe es coger un objeto iterable por ejemplo un arreglo, un string o un objeto por ejemplo
+        y nos permite tomar desde el valor X hasta el valor Y, es decir mostrar un array desde la pocision 1 hasta la 3.
+      </p>
+      <b>Original</b>
+      <pre>{{clientes}}</pre>
+      <b>slice:0:2</b>
+      <pre>{{clientes|slice:0:2}}</pre>
+    </p-fieldset>
+
+  </div>
+
+  <div class="col md:col-6 sm:col-9">
+    <p-fieldset legend="KeyValuePipe" [toggleable]="true">
+      <p>
+        Este pipe es para recorrer objetos y poder obtener el nombre de la variable y el valor de dicha variable.
+      </p>
+
+      <ul>
+        <li *ngFor="let item of persona | keyvalue"><b>{{item.key | titlecase}}</b>: {{item.value}}</li>
+      </ul>
+    </p-fieldset>
+
+  </div>
+
+  <div class="col md:col-6 sm:col-9">
+    <p-fieldset legend="Json Pipe" [toggleable]="true">
+      <p>
+        Este pipe funciona para mostrar lo que se le pida en formato json, de esta manera podra funcionar o servir en
+        algun momento para una depuración.
+      </p>
+
+      <pre>{{heroes|json}}</pre>
+    </p-fieldset>
+
+  </div>
+
+
+  <div class="col md:col-6 sm:col-9">
+    <p-fieldset legend="Async Pipe" [toggleable]="true">
+      <p>
+        El pipe async es muy util para el uso de todo lo que sea asincrono, en el ejemplo tenemos un setTimeOut que
+        luego de un tiempo se dispara un codigo, ademas tenemos tambien un Observable que se ejecuta cada segundo y este
+        tambien es asincrono.
+      </p>
+      <pre *ngIf="!(valorPromesa | async)">Resolviendo promesa</pre>
+      <pre>{{valorPromesa | async}}</pre>
+
+    </p-fieldset>
+
+  </div>
+
+</div>

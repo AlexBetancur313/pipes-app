@@ -1,0 +1,31 @@
+<div class="text-layout">
+  <h1>Pipes Numeros | Pipes Decimales y Porcentaje</h1>
+  <p>
+    Pipes incluidos en Angular - Usualmente en el Common Module
+  </p>
+</div>
+<div class="grid">
+  <div class="col-4">
+    <p-card header="Ventas Netas" subheader="del año 2022">
+      <!-- 1 es para indicar que quiere toda la parte entera, el "." separa para dar la otra indicacion y es que quiere de 2 a 4 decimales-->
+      {{ventasNetas | number:"1.2-4"}}
+    </p-card>
+
+
+  </div>
+  <div class="col-4">
+    <p-card header="Ventas Brutas" subheader="del año 2022">
+      <!-- El primer valor es para modificar la moneda o lo que aparecera antes del numero referente al pais que se quiere, el segundo valor "symbol-narrow" asiganr el simbolo del peso, el tercer valor es para definir que muestre el numero entero y los decimales entre 2 y 4-->
+      {{ventasNetas + 2000000 | currency:"EUR":"symbol-narrow":"1.2-4"}}
+    </p-card>
+  </div>
+
+
+  <div class="col-4">
+    <p-card header="Porcentaje de Ganancia" subheader="del año 2022">
+      <!---->
+      {{porcentaje| percent:"1.2-4"}}
+    </p-card>
+  </div>
+
+</div>
